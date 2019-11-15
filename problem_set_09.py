@@ -181,9 +181,9 @@ def call_API_updated(category, option):
 
 
 # BEGIN TEST FOR PROBLEM 5 (Uncomment me when you're ready!)
-print(f"Problem 5 test 1: {call_API_updated('people', 1)['name'] == 'Luke Skywalker'}") #should print True
-print(f"Problem 5 test 2: {call_API_updated('people', 'luke')['results'][0]['height'] == '172'}") #should print True
-print(f"Problem 5 test 3: {call_API_updated('species', None)['results'][3]['classification'] == 'amphibian'}") #should print True
+#print(f"Problem 5 test 1: {call_API_updated('people', 1)['name'] == 'Luke Skywalker'}") #should print True
+#print(f"Problem 5 test 2: {call_API_updated('people', 'luke')['results'][0]['height'] == '172'}") #should print True
+#print(f"Problem 5 test 3: {call_API_updated('species', None)['results'][3]['classification'] == 'amphibian'}") #should print True
 # END TEST FOR PROBLEM 5
 
 # END PROBLEM 5
@@ -209,10 +209,24 @@ print(f"Problem 5 test 3: {call_API_updated('species', None)['results'][3]['clas
 
 # BEGIN PROBLEM 6
 films = []
+for item in search_dict["results"][0]["films"]:
+    #print(item.split('/')[4]) 
+    #print(type(item.split('/')[5]))
+    for key, value in call_API_updated(item.split('/')[4], int(item.split('/')[5])).items():
+        if key == 'title':
+            films.append(value)
+r2_d2['films'] = films
+file_name = 'r2_d2.json'
+#json_r2 = json.dumps(r2_d2)
+with open(file_name, 'w') as file_obj:
+    json.dump(r2_d2, file_obj)
+    
+
+ 
 
 
 # BEGIN TEST FOR PROBLEM 6 (Uncomment me when you're ready!)
-# print(f"Problem 6 test: {r2_d2['films'][0] == 'The Empire Strikes Back'}")
+print(f"Problem 6 test: {r2_d2['films'][0] == 'The Empire Strikes Back'}")
 # END TEST FOR PROBLEM 6
 
 # END PROBLEM 6
