@@ -173,7 +173,7 @@ def call_API_updated(category, option):
     search = '?search='
     if type(option) == str:
         answer = requests.get(baseurl + category + root + search + str(option)).json()
-    if type(option) == int:
+    elif type(option) == int:
         answer = requests.get(baseurl + category + root + str(option)).json()   
     else:
         answer = requests.get(baseurl + category).json()
