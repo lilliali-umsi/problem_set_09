@@ -92,11 +92,16 @@ for i in range(len(titles)):
 
 # BEGIN PROBLEM 3
 def call_API(category, id):
-    return None
+    root = '/'
+    if id:
+        call = requests.get(baseurl + category + root + str(id) + root).json()
+    else:
+        call = requests.get(baseurl + category).json()
+    return call 
 
 
 # BEGIN TEST FOR PROBLEM 3 (Uncomment me when you're ready!)
-# print(f"Problem 3 test: {call_API('people', 1)['name'] == 'Luke Skywalker'}") #should print True
+print(f"Problem 3 test: {call_API('people', 1)['name'] == 'Luke Skywalker'}") #should print True
 # END TEST FOR PROBLEM 3
 
 # END PROBLEM 3
