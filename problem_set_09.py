@@ -101,7 +101,7 @@ def call_API(category, id):
 
 
 # BEGIN TEST FOR PROBLEM 3 (Uncomment me when you're ready!)
-print(f"Problem 3 test: {call_API('people', 1)['name'] == 'Luke Skywalker'}") #should print True
+#print(f"Problem 3 test: {call_API('people', 1)['name'] == 'Luke Skywalker'}") #should print True
 # END TEST FOR PROBLEM 3
 
 # END PROBLEM 3
@@ -121,10 +121,29 @@ print(f"Problem 3 test: {call_API('people', 1)['name'] == 'Luke Skywalker'}") #s
 # BEGIN PROBLEM 4
 r2_d2 = {}
 search_url = "https://swapi.co/api/people/?search=r2-d2"
+search_dict = requests.get(search_url).json()
 
+for item in search_dict['results']:
+    for key, value in item.items():
+        if key == "name":
+            r2_d2[key] = value
+        if key == "height":
+            r2_d2[key] = value
+        if key == "mass":
+            r2_d2[key] = value
+        if key == "hair_color":
+            r2_d2[key] = value
+        if key == "skin_color":
+            r2_d2[key] = value
+        if key == "eye_color":
+            r2_d2[key] = value
+        if key == "birth_year":
+            r2_d2[key] = value
+        if key == "gender":
+            r2_d2[key] = value
 
 # BEGIN TEST FOR PROBLEM 4 (Uncomment me when you're ready!)
-# print(f"Problem 4 test: {r2_d2['skin_color'] == 'white, blue'}") #should print True
+#print(f"Problem 4 test: {r2_d2['skin_color'] == 'white, blue'}") #should print True
 # END TEST FOR PROBLEM 4
 
 # END PROBLEM 4
