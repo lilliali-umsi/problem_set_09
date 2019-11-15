@@ -169,13 +169,21 @@ for item in search_dict['results']:
 
 # BEGIN PROBLEM 5
 def call_API_updated(category, option):
-    return None
+    root = '/'
+    search = '?search='
+    if type(option) == str:
+        answer = requests.get(baseurl + category + root + search + str(option)).json()
+    if type(option) == int:
+        answer = requests.get(baseurl + category + root + str(option)).json()   
+    else:
+        answer = requests.get(baseurl + category).json()
+    return answer 
 
 
 # BEGIN TEST FOR PROBLEM 5 (Uncomment me when you're ready!)
-# print(f"Problem 5 test 1: {call_API_updated('people', 1)['name'] == 'Luke Skywalker'}") #should print True
-# print(f"Problem 5 test 2: {call_API_updated('people', 'luke')['results'][0]['height'] == '172'}") #should print True
-# print(f"Problem 5 test 3: {call_API_updated('species', None)['results'][3]['classification'] == 'amphibian'}") #should print True
+print(f"Problem 5 test 1: {call_API_updated('people', 1)['name'] == 'Luke Skywalker'}") #should print True
+print(f"Problem 5 test 2: {call_API_updated('people', 'luke')['results'][0]['height'] == '172'}") #should print True
+print(f"Problem 5 test 3: {call_API_updated('species', None)['results'][3]['classification'] == 'amphibian'}") #should print True
 # END TEST FOR PROBLEM 5
 
 # END PROBLEM 5
