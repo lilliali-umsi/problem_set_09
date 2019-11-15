@@ -29,10 +29,10 @@ for key, value in films_dict.items():
     films_keys = key
 
 
-#print(films_dict)
+#print(films_keys)
 
 # BEGIN TEST FOR PROBLEM 1 (Uncomment me when you're ready!)
-print(f"Problem 1 test: {'results' in films_keys}") #should print True
+#print(f"Problem 1 test: {'results' in films_keys}") #should print True
 # END TEST FOR PROBLEM 1
 
 # END PROBLEM 1
@@ -51,10 +51,27 @@ print(f"Problem 1 test: {'results' in films_keys}") #should print True
 
 # BEGIN PROBLEM 2
 title_id_chars = []
+titles = []
+episode_id = []
+character_count = []
+for item in films_dict['results']:
+    for key, value in item.items():
+        if key == 'title':
+            titles.append(value)
+        if key == 'episode_id':
+            episode_id.append(value)
+        if key == 'characters':
+            character_count.append(len(value))
+ 
+i = 0
+for i in range(len(titles)):
+    tup =(titles[i], episode_id[i], character_count[i])
+    i+= 1
+    title_id_chars.append(tup)
 
 
 # BEGIN TEST FOR PROBLEM 2 (Uncomment me when you're ready!)
-# print(f"Problem 2 test: {sum(count[2] for count in title_id_chars)==173}") #should print True
+#print(f"Problem 2 test: {sum(count[2] for count in title_id_chars)==173}") #should print True
 # END TEST FOR PROBLEM 2
 
 # END PROBLEM 2
